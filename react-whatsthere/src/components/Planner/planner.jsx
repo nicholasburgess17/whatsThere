@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faTrash, faMapLocationDot } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios';
 
 export default function Planner() {
-  const [items, setItems] = useState([
-    { title: 'Item 1', time: '12:00' },
-    { title: 'Item 2', time: '12:00' },
-    { title: 'Item 3', time: '12:00' },
-  ]);
+
+  const URL = "http://localhost:3000/api/attractions"
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    axios.get(URL)
+      .then(res => { setItems(res.data) })
+      .catch(err => { console.log(err) })
+  }, [])
+
+
   const [editingIndex, setEditingIndex] = useState(-1);
   const [newTitle, setNewTitle] = useState('');
   const [newTime, setNewTime] = useState('12:00');
@@ -76,11 +84,17 @@ export default function Planner() {
             ) : (
               <div className="bg-secondary flex justify-between">
                 <div className="text-white px-2 py-2">
-                  <div className="flex justify-between text-3xl font-semibold">
-                    <span>{item.title}</span>
+                  <div className="flex justify-between text-xl font-semibold">
+                    <span>{item.name}</span>
                   </div>
-                  <div className="text-lg">
-                    <span>{item.time}</span>
+                  <div className="text-m">
+                    <span>{item.address}</span>
+                  </div>
+                  <div className="text-m">
+                    <span>{item.startTime}</span>
+                  </div>
+                  <div className="text-">
+                    <span>{item.endTime}</span>
                   </div>
                 </div>
                 <div className="space-x-4 px-4 py-2">

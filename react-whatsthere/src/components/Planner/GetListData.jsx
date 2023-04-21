@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const URL = "http://localhost:3000/api/attractions"
-const URL2 = "https://jsonplaceholder.typicode.com/users"
 
 export default function GetListData() {
   
@@ -34,19 +33,4 @@ export default function GetListData() {
       </table>
     </div>
   );
-
-
-  
-
-//   useEffect(() => {
-//     await axios
-//       .get(URL)
-//       .then((res) => {
-//         setListItems(res.data);
-//         console.log(res.data)
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   }, []);
 }
