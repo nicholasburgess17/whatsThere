@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const URL = "http://localhost:3001/api/attractions"
+const URL = "http://localhost:3000/api/attractions"
 const URL2 = "https://jsonplaceholder.typicode.com/users"
 
 export default function GetListData() {
@@ -9,7 +9,7 @@ export default function GetListData() {
   const [listItems, setListItems] = useState([]);
 
   useEffect(() => {
-    axios.get(URL2)
+    axios.get(URL)
     .then(res => {setListItems(res.data)})
     .catch(err => {console.log(err)})
   }, [])
