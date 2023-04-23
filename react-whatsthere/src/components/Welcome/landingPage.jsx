@@ -1,11 +1,11 @@
 import Features from "./features";
-// import Login from "./login";
+import Register from "./register";
 import VideoPlayer from "./videoPlayer";
 
 export default function LandingPage() {
   return (
     <div>
-      <Login />
+      <Register />
       <Features />
       <VideoPlayer />
     </div>
