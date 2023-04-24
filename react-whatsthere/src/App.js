@@ -9,7 +9,6 @@ import { CssBaseline, Grid } from "@mui/material";
 import { getAttractions } from "./components/Map/getAttractions";
 import axios from "axios";
 import Adding from "./components/Map/Adding-Attractions";
-import Map2 from "./components/Map/Map2";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -71,7 +70,7 @@ export default function App() {
           <Login />
         </Grid>
         <Grid item xs={12} md={8}>
-          {/* <Map
+          <Map
             setCoords={setCoords}
             setBounds={setBounds}
             coords={coords}
@@ -86,8 +85,7 @@ export default function App() {
             <div className={display}>
               <Adding attraction={attraction} setDisplay={setDisplay} setData={setData} />
             </div>
-          </div> */}
-          <Map2 />
+          </div>
         </Grid>
       </Grid>
     </main>
