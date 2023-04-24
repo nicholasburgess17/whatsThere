@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPenToSquare,
@@ -6,7 +6,7 @@ import {
   faMapLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { id } from "date-fns/locale";
+// import { id } from "date-fns/locale";
 
 export default function Planner({ items, setItems }) {
   const [editingIndex, setEditingIndex] = useState(-1);
@@ -31,8 +31,7 @@ export default function Planner({ items, setItems }) {
   };
 
   const handleDeleteClick = (id) => {
-    console.log(id);
-    return axios
+    axios
       .delete(`/api/attractions/${id}`)
       .then((res) => axios.get("/api/attractions"))
       .then((res) => setItems(res.data))

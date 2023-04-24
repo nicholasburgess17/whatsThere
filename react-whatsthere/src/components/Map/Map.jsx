@@ -39,8 +39,6 @@ export default function Map({
   const desktop = useMediaQuery("(min-width:900px)");
 
   const handleAdd = (a) => {
-    const startTime = new Date(Date.now()).toLocaleString();
-    const twoHours = new Date(Date.now() + 3600 * 1000 * 2).toLocaleString();
     const rating = Number(a.rating);
     setDisplay("visible");
     setAttraction({
@@ -48,14 +46,17 @@ export default function Map({
       address: a.address,
       city: a.address_obj.city,
       rating: rating,
-      startTime: startTime,
-      endTime: twoHours,
-      listId: 1,
     });
   };
 
   const handleMore = (a) => {
-    setAttraction(a);
+    const rating = Number(a.rating);
+    setAttraction({
+      name: a.name,
+      address: a.address,
+      city: a.address_obj.city,
+      rating: rating,
+    });
     setAttractionInfoShown(true);
   };
 
@@ -142,7 +143,10 @@ export default function Map({
                       >
                         Add
                       </Button>
-                      <Button size="small" onClick={() => handleMore(a)}>
+                      <Button
+                        size="small"
+                        onClick={() => handleMore(a)}
+                      >
                         More
                       </Button>
                     </CardActions>
@@ -176,11 +180,14 @@ export default function Map({
                       <Button
                         sx={buttonStyles}
                         size="small"
-                        onClick={() => handleMore(a)}
+                        onClick={() => handleAdd(a)}
                       >
                         <AddCircleOutlineOutlinedIcon color="primary" />
                       </Button>
-                      <Button size="small" onClick={() => handleMore(a)}>
+                      <Button
+                        size="small"
+                        onClick={() => handleMore(a)}
+                      >
                         <MoreHorizOutlinedIcon color="primary" />
                       </Button>
                     </CardActions>
@@ -189,15 +196,16 @@ export default function Map({
               </div>
             ))}
         </GoogleMapReact>
-          {attractionInfoShown && attraction && (
-                  <AttractionInfo
-                    attraction={attraction}
-                    attractions={attractions}
-                    attractionInfoShown={attractionInfoShown}
-                    setAttractionInfoShown={setAttractionInfoShown}
-                  />
-                  )}
-          </div>
+        {attractionInfoShown && attraction && (
+          <AttractionInfo
+            attraction={attraction}
+            attractions={attractions}
+            attractionInfoShown={attractionInfoShown}
+            setAttractionInfoShown={setAttractionInfoShown}
+            setDisplay={setDisplay}
+          />
+        )}
+      </div>
     </div>
   );
 }

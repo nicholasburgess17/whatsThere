@@ -8,6 +8,8 @@ import axios from "axios";
 import Adding from "./components/Map/Adding-Attractions";
 import Alert from "./components/Map/Alert";
 import jwt_decode from "jwt-decode";
+import Alert from "./components/Map/Alert";
+import jwt_decode from "jwt-decode";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -22,6 +24,11 @@ export default function App() {
   //login states
   const [user, setUser] = useState({});
   const [userData, setUserData] = useState();
+
+  //login states
+  const [user, setUser] = useState({});
+  const [userData, setUserData] = useState();
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((e) => {
       setCoords({ lat: e.coords.latitude, lng: e.coords.longitude });
@@ -106,8 +113,17 @@ export default function App() {
       <Grid container spacing={1.5} item xs={12}>
         <Grid className="flex-col" item xs={12} md={4}>
           <Header />
-
           <Planner items={items} setItems={setItems} />
+          {Object.keys(user).length !== 0 && (
+            <div>
+              <button
+                onClick={handleSignOut}
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+              >
+                Sign out
+              </button>
+            </div>
+          )}
           {Object.keys(user).length !== 0 && (
             <div>
               <button
@@ -138,6 +154,7 @@ export default function App() {
                 setDisplay={setDisplay}
                 setData={setData}
               />
+              <Alert items={items} setItems={setItems} />
               <Alert items={items} setItems={setItems} />
             </div>
           </div>
