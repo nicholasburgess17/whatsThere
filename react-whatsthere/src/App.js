@@ -62,6 +62,7 @@ export default function App() {
   }, []);
 
   //Login Functions
+  
   const handleCallbackResponse = (response) => {
     // response.credential is an encoded jwt
     const userObj = jwt_decode(response.credential);
