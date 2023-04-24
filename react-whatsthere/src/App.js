@@ -8,8 +8,6 @@ import axios from "axios";
 import Adding from "./components/Map/Adding-Attractions";
 import Alert from "./components/Map/Alert";
 import jwt_decode from "jwt-decode";
-import Alert from "./components/Map/Alert";
-import jwt_decode from "jwt-decode";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -110,16 +108,6 @@ export default function App() {
         <Grid className="flex-col" item xs={12} md={4}>
           <Header />
           <Planner items={items} setItems={setItems} />
-          {Object.keys(user).length !== 0 && (
-            <div>
-              <button
-                onClick={handleSignOut}
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-              >
-                Sign out
-              </button>
-            </div>
-          )}
           {Object.keys(user).length !== 0 && (
             <div>
               <button
