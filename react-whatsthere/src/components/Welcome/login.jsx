@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Login = () => {
   const [user, setUser] = useState({});
-  const [data, setData] = useState();
+  const [userData, setUserData] = useState();
 
   const handleCallbackResponse = (response) => {
     // response.credential is an encoded jwt
@@ -16,7 +16,7 @@ const Login = () => {
       email: userObj.email,
       name: userObj.name,
     };
-    setData(userData);
+    setUserData(userData);
   };
 
   const handleSignOut = () => {
@@ -44,10 +44,10 @@ const Login = () => {
   }, []);
 
   useEffect(() => {
-    if (data) {
-      axios.put("/api/users", data);
+    if (userData) {
+      axios.put("/api/users", userData);
     }
-  }, [data]);
+  }, [userData]);
 
   return (
     <div>
