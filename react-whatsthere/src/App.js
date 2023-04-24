@@ -25,10 +25,6 @@ export default function App() {
   const [user, setUser] = useState({});
   const [userData, setUserData] = useState();
 
-  //login states
-  const [user, setUser] = useState({});
-  const [userData, setUserData] = useState();
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((e) => {
       setCoords({ lat: e.coords.latitude, lng: e.coords.longitude });
