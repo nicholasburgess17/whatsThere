@@ -89,10 +89,10 @@ export default function App() {
       callback: handleCallbackResponse,
     });
 
-    google.accounts?.id.renderButton(document.getElementById("signInDiv"), {
-      theme: "outline",
-      size: "large",
-    });
+    // google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+    //   theme: "outline",
+    //   size: "large",
+    // });
 
     // prompts users to login with usual accounts (oneTap login)
     if (Object.keys(user)) {
