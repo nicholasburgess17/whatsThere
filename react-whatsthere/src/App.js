@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import jwt_decode from "jwt-decode";
 import Map from "./components/Map/Map";
 import Header from "./components/Header/Header";
 import Planner from "./components/Planner/planner";
@@ -7,7 +6,8 @@ import { CssBaseline, Grid } from "@mui/material";
 import { getAttractions } from "./components/Map/getAttractions";
 import axios from "axios";
 import Adding from "./components/Map/Adding-Attractions";
-import Alarm from "./components/Map/Alarm";
+import Alert from "./components/Map/Alert";
+import jwt_decode from "jwt-decode";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -22,7 +22,6 @@ export default function App() {
   //login states
   const [user, setUser] = useState({});
   const [userData, setUserData] = useState();
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((e) => {
       setCoords({ lat: e.coords.latitude, lng: e.coords.longitude });
@@ -60,9 +59,8 @@ export default function App() {
         console.log(err);
       });
   }, []);
-
   //Login Functions
-  
+
   const handleCallbackResponse = (response) => {
     // response.credential is an encoded jwt
     const userObj = jwt_decode(response.credential);
@@ -88,7 +86,6 @@ export default function App() {
         "632068121299-unggfu717fg5kklshvbmn1kl6s6nl9ue.apps.googleusercontent.com",
       callback: handleCallbackResponse,
     });
-
 
     // prompts users to login with usual accounts (oneTap login)
     if (Object.keys(user)) {
@@ -141,7 +138,7 @@ export default function App() {
                 setDisplay={setDisplay}
                 setData={setData}
               />
-              <Alarm items={items} />
+              <Alert items={items} setItems={setItems} />
             </div>
           </div>
         </Grid>
