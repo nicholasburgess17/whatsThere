@@ -3,7 +3,6 @@ import jwt_decode from "jwt-decode";
 import Map from "./components/Map/Map";
 import Header from "./components/Header/Header";
 import Planner from "./components/Planner/planner";
-// import Login from "./components/Welcome/login";
 import { CssBaseline, Grid } from "@mui/material";
 import { getAttractions } from "./components/Map/getAttractions";
 import axios from "axios";
@@ -89,10 +88,6 @@ export default function App() {
       callback: handleCallbackResponse,
     });
 
-    // google.accounts.id.renderButton(document.getElementById("signInDiv"), {
-    //   theme: "outline",
-    //   size: "large",
-    // });
 
     // prompts users to login with usual accounts (oneTap login)
     if (Object.keys(user)) {
@@ -115,9 +110,6 @@ export default function App() {
           <Header />
 
           <Planner items={items} setItems={setItems} />
-
-          {/* <Login /> */}
-          {Object.keys(user).length === 0 && <div id="signInDiv"></div>}
           {Object.keys(user).length !== 0 && (
             <div>
               <button
